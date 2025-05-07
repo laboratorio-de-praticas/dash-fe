@@ -1,0 +1,415 @@
+
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.card p {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  padding: 4px;
+  height: fit-content;
+  overflow-x: auto;
+  width: 100%;
+  z-index: 33;
+  position: relative;
+  overflow: visible;
+}
+
+.carouselShifted {
+  transform: translateY(40px);
+  transition: transform 0.3s ease;
+}
+
+.card {
+  height: fit-content;
+  border-radius: 8px;
+  max-width: 95%;
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.01);
+  cursor: pointer;
+}
+
+.cardContent {
+  height: fit-content;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #f8f6f6;
+}
+
+.cardHeader {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.cardInnerContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  align-items: center;
+  justify-items: center;
+}
+
+.totalVotes {
+  font-size: clamp(16px, 3vw, 30px);
+  font-weight: bold;
+  color: #000;
+  margin: 0px;
+}
+
+.pieChartContainer {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  cursor: pointer;
+}
+
+.positionBadge {
+  top: -10px;
+  left: -10px;
+  background-color: #ad0101;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 7px;
+  width: 35px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.classID {
+  text-align: center;
+  width: 100%;
+}
+
+.selected {
+  position: relative;
+}
+
+.selected::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  background-color: red;
+  border-radius: 0 0 8px 8px;
+  transition: all 0.3s ease-in-out;
+}
+.nomedocurso {
+  font-size: 1.5rem;
+  color: #1a6c7c;
+}
+
+.nomesemcurso {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 20px;
+  width: 100%;
+  color: #1a6c7c;
+}
+.cardExtraContentGlobal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  padding: 50px 70px 5px 70px;
+  z-index: 10;
+}
+.hrWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  padding: 0.5rem 0;
+}
+
+.hrSeparador {
+  width: 90%;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+.alunosCor {
+  padding: 10px;
+  background-color: #ad0101;
+  color: white;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-weight: bold;
+}
+.peopleIcon {
+  width: 20px;
+}
+.votacaoInfoText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.votosText {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.cardAlunos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  background-color: #fff;
+  width: 100%;
+  justify-items: center;
+  padding: 80px 70px 40px 70px;
+}
+
+.representanteFoto {
+  width: 250px;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+.cardContentAlunos {
+  width: 100%;
+  background-color: #fff;
+}
+
+.representanteCard {
+  width: 100%;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.representanteInfo {
+  margin-top: 8px;
+  text-align: center;
+}
+.candidato {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  color: #1a6c7c;
+  margin-bottom: 30px;
+  text-align: center;
+  z-index: 5;
+}
+
+.cardExtraContentWrapper {
+  position: relative;
+  z-index: 2;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.telaContainer {
+  width: 100%;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  gap: 52px;
+  padding: 0 70px 70px 70px;
+}
+
+.listContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+}
+
+.chartContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 26px;
+  width: 100%;
+}
+
+.chartContainer > * {
+  flex: 1;
+  min-width: 0;
+}
+
+.registro {
+  width: 80%;
+  background-color: #ffffff;
+}
+
+.charts{
+  padding: 25px;
+}
+
+@media (max-width: 768px) {
+  .chartContainer {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cardContainer {
+    padding: 2px;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+
+  .cardHeader {
+    font-size: 14px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .positionBadge {
+    width: 30px;
+    height: 28px;
+    font-size: 14px;
+    top: 0;
+    left: 0;
+  }
+
+  .totalVotes {
+    font-size: 20px;
+  }
+
+  .votosText {
+    font-size: 13px;
+  }
+
+  .cardExtraContentGlobal {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 20px 10px 20px;
+    text-align: center;
+    background-color: #fff;
+  }
+
+  .nomedocurso {
+    font-size: 1.2rem;
+  }
+
+  .alunosCor {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .peopleIcon {
+    width: 16px;
+  }
+
+  .hrWrapper {
+    padding: 0.2rem 0;
+  }
+
+  .cardAlunos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .representanteCard {
+    padding: 10px 0;
+  }
+
+  .representanteFoto {
+    width: 110%;
+    height: auto;
+    max-width: 300px;
+  }
+
+  .candidato {  
+    position: relative;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .carouselShifted {
+    transform: translateY(20px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .totalVotes {
+    font-size: 18px;
+  }
+
+  .votosText {
+    font-size: 12px;
+  }
+
+  .cardHeader {
+    font-size: 12px;
+  }
+
+  .positionBadge {
+    font-size: 12px;
+  }
+
+  .nomedocurso {
+    font-size: 1rem;
+  }
+
+  .candidato {
+    font-size: 1rem;
+  }
+}

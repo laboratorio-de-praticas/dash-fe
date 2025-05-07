@@ -1,0 +1,201 @@
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .logoContainer {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    padding: 16px 32px 16px 16px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    color: white;
+    z-index: 10;
+  }
+  
+  .logo {
+    height: 64px;
+    width: auto;
+    margin-right: 12px;
+  }
+  
+  .logoText {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .logoText strong {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .navContent {
+    display: flex;
+    align-items: center;
+    width: auto; /* libera para crescer */
+  }
+
+  .logoWrapper {
+    position: relative;
+    width: 200px; /* ou o tamanho que quiser */
+    height: 100px; /* ou o tamanho que quiser */
+  }
+  .navContent ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  .navContent li {
+    margin-right: 20px;
+  }
+
+  
+  .navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #B20000;
+    padding: 10px 20px;
+    height: 80px;
+    width: 100%;
+  }
+  .profile {
+    display: flex;
+    align-items: center;
+    padding: 50px;
+  }
+
+  .profilePic {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+  .logoMenu {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .rightSection {
+    display: flex;
+    align-items: center;
+  }
+  
+  .socialContainer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-right: 24px;
+  }
+  
+  .socialIcon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    border-radius: 4px;
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .socialIcon:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+  }
+  
+  .socialHandle {
+    margin-left: 8px;
+    color: #666;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .hamburgerButton {
+    display: none;
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+  }
+  
+  .mobileMenu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 5;
+  }
+  
+  .mobileLink {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+  .mobileLink:hover {
+    background-color: #f5f5f5;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .subtitle{
+      font-size: 10px;
+    }
+    .profile {
+      display: flex;
+      justify-content: flex-end; /* Alinha à direita */
+      padding: 5px;
+      width: 30%;
+    }
+    
+    .profilePic {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      margin-right: 20px;
+    }
+    .logoMenu{
+      margin-left: -28px;
+
+    }
+    .socialContainer {
+      display: none;
+    }
+    
+    .hamburgerButton {
+      display: block;
+      padding: 30px;
+    }
+    
+    .mobileMenu {
+      display: flex;
+      width: 50%;
+    }
+    
+    .logoContainer {
+      padding: 16px;
+      border-radius: 0 100px 100px 0;
+    }
+  }

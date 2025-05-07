@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap');
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 80vh;
+    padding-left: 50px;
+    padding-top: 50px;
+    padding-right: 50px;
+  }
+  
+  .header {
+    width: 100%;
+    height: auto;
+    border-bottom: #1a6c7c 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .title {
+    font-size: 36px;
+    font-family: "Roboto Slab", sans-serif;
+    color: #1a6c7c;
+    margin-bottom: 0.7rem;
+  }
+
+  .dropdownGroup {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .votacaoSelector {
+    min-width: 150px !important;
+    border: 1px solid #f8f5f5 !important;
+    border-radius: 6px !important;
+    background-color: #ede9e9 !important;
+    font-size: 10px !important;
+    font-family: 'Roboto', sans-serif;
+    padding: 8px 12px;
+    gap: 10px;
+    color: #333333  !important;
+  }
+  
+  .votacaoSelector .p-dropdown-label {
+    color: #1a6c7c !important; /* cor do texto visível */
+  }
+  
+  .votacaoSelector .p-dropdown-trigger {
+    color: #1a6c7c !important; /* cor da setinha */
+  }
+  
+  .votacaoSelector .p-dropdown-panel {
+    background: #ffffff !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 4px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  .votacaoSelector:hover {
+    border-color: #b20000 !important;
+  }
+  
+  .votacaoSelector:focus {
+    box-shadow: 0 0 0 2px rgba(178, 0, 0, 0.2) !important;
+  }
+  
+  /* CSS - SUBTITLE */
+
+  .projetosHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    height: 50px;
+    width: 100%;
+  }
+  
+  .sectionTitle {
+    font-family: "Roboto Slab", sans-serif;
+    font-size: 32px;
+    color: #1a6c7c;
+    margin: 0;
+    white-space: nowrap;
+  }
+  
+  .filterContainer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    display: flex;
+    width: auto;
+  }
+
+  .areaFilter {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #f8f5f5;
+    border-radius: 6px;
+    font-size: 10px !important;
+    font-family: 'Roboto', sans-serif;
+    background-color: #ede9e9;
+    color: #333;
+    min-width: 180px;
+    padding: 8px 12px;
+  }
+
+  
+  /* CSS - DIV IMAGEM + DADOS DO PROJETO */
+
+  .projetoContainer {
+    display: flex;
+    padding-top: 5px;
+    max-width: 800px;
+    margin: 20px 0; /* Removido margin auto para não centralizar */
+    font-family: Arial, sans-serif;
+  }
+  
+  .wrapper {
+    padding-left: 2px; /* ajuste conforme o padding da página */
+  }
+  
+  .imagemProjeto {
+    width: 250px;
+    height: 150px;
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    position: relative;
+  }
+  
+  .imagemProjeto::before {
+    content: "📷";
+    font-size: 40px;
+    color: #999;
+  }
+  
+  .infoProjeto {
+    flex: 1;
+    margin-left: 25px;
+  }
+  
+  .nomeProjeto {
+    font-size: 35px;
+    font-family: Verdana, sans-serif;
+    color: #004854;
+  }
+  
+  .integrantes {
+    margin-top: 5px;
+    font-size: 25px;
+    font-family: Verdana, sans-serif;
+    color: #004854;
+  }
+  
+  .area {
+    margin-top: 5px;
+    font-size: 20px;
+    font-family: Verdana, sans-serif;
+    color: #004854;
+    margin-bottom: 10px;
+  }
+  
+  /* CSS - DESCRIÇÃO DO PROJETO */
+
+  .descricaoContainer {
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .titulo {
+    font-size: 25px;
+    font-family: Verdana, sans-serif;
+    color: #004854;
+    margin-bottom: 15px;
+  }
+  
+  .texto {
+    font-size: 25px;
+    font-family: Verdana, sans-serif;
+    text-align: justify;
+    color: #004854;
+  }
+
+  

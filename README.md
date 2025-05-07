@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# 📊 Dash e Reports – Sistema de Votação (Front-End)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este repositório contém o desenvolvimento do **Front-End** do **Sistema de Votação para Representantes de Turma e Projetos Acadêmicos** da Fatec-SP.  
+A interface é focada em **visualização de resultados em tempo real**, com ênfase em **auditabilidade, acessibilidade** e **interpretação visual dos dados**.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🧩 Arquitetura
 
-### `npm start`
+O front-end se comunica com o back-end por meio de uma **API REST**, utilizando **Axios** para requisições HTTP e **SSE (Server-Sent Events)** para atualização em tempo real dos dados de votação.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![image](https://github.com/user-attachments/assets/1d1994e3-193d-452f-9370-e42d401caa03)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## ⚙️ Componentes e Tecnologias
 
-### `npm run build`
+O projeto utiliza as seguintes tecnologias principais:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Next.js**: Framework baseado em React para criação da interface com renderização híbrida e rotas otimizadas.
+- **React.js**: Biblioteca base para construção da UI antes da refatoração para Next.
+- **Axios**: Utilizado para comunicação com a API do back-end.
+- **CORS**: Gerenciado para permitir a integração entre front-end e back-end hospedados em ambientes diferentes.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🖼️ Exemplo Visual
 
-### `npm run eject`
+![Image](https://github.com/user-attachments/assets/c87c7359-fca6-486b-9b3b-92e6dbd3c30d)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🧪 Tecnologias Utilizadas
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Next.js**
+- **React.js**
+- **JavaScript (ES6+)**
+- **HTML5**
+- **CSS3**
+- **Axios**
+- **CORS**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## ✅ Pré-requisitos
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Para rodar o projeto localmente, você precisará ter instalado:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [Node.js](https://nodejs.org/) (versão recomendada: LTS)
+- npm (gerenciador de pacotes padrão do Node.js)
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🚀 Instalação e Execução
 
-### Analyzing the Bundle Size
+Siga os passos abaixo para rodar o projeto localmente:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/seu-repositorio.git
 
-### Making a Progressive Web App
+# Acesse o diretório do projeto
+cd dash-fe
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# Instale as dependências
+npm install
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Execute o projeto em ambiente de desenvolvimento
+npm run dev
