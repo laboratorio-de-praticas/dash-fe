@@ -55,7 +55,8 @@ const VtInternaCards = ({ conteudo }) => {
               otimo: Math.floor(Math.random() * 100),
               bom: Math.floor(Math.random() * 100),
             },
-            votos_por_dia: evento.votos_por_dia || [],  // Puxando os dados de votos_por_dia
+            votos_por_dia: evento.votos_por_dia || [],
+            log_votos: [], // Adiciona log_votos
           };
 
           try {
@@ -69,9 +70,10 @@ const VtInternaCards = ({ conteudo }) => {
                 qtd_votos_recebidos: c.qtd_votos_recebidos,
               })
             );
+            turmaData.log_votos = candidatosResponse.data.log_votos || []; // Inclui log_votos
           } catch (error) {
             console.error(
-              `Erro ao buscar candidatos para ${evento.curso_semestre}:`,
+              `Erro ao buscar candidatos ou log_votos para ${evento.curso_semestre}:`,
               error
             );
           }
@@ -199,15 +201,6 @@ const VtInternaCards = ({ conteudo }) => {
                   setSelectedCard(
                     selectedCard?.name === item.name ? null : item
                   );
-                  alert(
-                    `Turma: ${item.name}\n` +
-                    `Votos: ${item.votos}\n` +
-                    `Total de Alunos: ${item.totalAlunos}\n` +
-                    `Candidatos: ${item.representantes
-                      .map((rep) => rep.name)
-                      .join(", ")}\n` +
-                    `Votos por Dia: ${JSON.stringify(item.votos_por_dia)}`
-                  );
                 }}
                 key={item.name}
               >
@@ -230,7 +223,7 @@ const VtInternaCards = ({ conteudo }) => {
                         isClient ? (
                           <PieChart width={150} height={100}>
                             <Pie
-                              data={[ 
+                              data={[
                                 {
                                   name: "Ótimo",
                                   value: item.feedback.otimo || 0,
@@ -276,7 +269,7 @@ const VtInternaCards = ({ conteudo }) => {
             <p className={styles.alunosCor}>
               {selectedCard.total} Alunos{" "}
               <img
-                src="/people.png"
+                src="/dash/icone.jpg"
                 alt="ícone de pessoas"
                 className={styles.peopleIcon}
               />
