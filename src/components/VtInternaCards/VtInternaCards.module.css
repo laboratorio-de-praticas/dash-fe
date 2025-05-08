@@ -413,3 +413,15 @@
     font-size: 1rem;
   }
 }
+
+
+
+.titleChart {
+  size: 56px;
+  font-family: "Roboto Slab";
+  color: #1A6C7C;
+
+}
+.chartContainer {
+  width: 100%;
+}

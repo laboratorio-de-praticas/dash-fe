@@ -5,21 +5,34 @@ import { TurmaContext } from "../../context/TurmaContext";
 import { useIsClient } from "../../hooks/useIsClient";
 import { PieChart, Pie, Cell } from "recharts";
 import axios from "axios";
+import ContainerChart from "../ContainerChart/ContainerChart";
+import ChartBar from "../ChartBar/ChartBar";
+import ChartSemanal from "../ChartSemanal";
+import RegistroVotos from "../ListaRegistroVotos/ListaRegistroVotos";
+import ChartDonut from "../ChartDonut/ChartDonut";
 
 const VtInternaCards = ({ conteudo }) => {
-  const { selectedCurso, selectedCard, setSelectedCard, setSelectedCurso } = useContext(TurmaContext);
+  const { selectedCurso, selectedCard, setSelectedCard, setSelectedCurso } =
+    useContext(TurmaContext);
   const isClient = useIsClient();
   const carouselRef = useRef(null);
   const [eventosAtivos, setEventosAtivos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [turmaDataVotos, setTurmaDataVotos] = useState({ dsm: [], gestao: [] });
 
+  const chartData = [
+    { name: "Votos Confirmados", value: selectedCard?.votosValidos || 0 },
+    { name: "Não Votaram", value: selectedCard?.votosPendentes || 0 },
+  ];
+
   useEffect(() => {
     const fetchEventosAtivos = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/v1/dashboard/interno/ativo');
+        const response = await axios.get(
+          "http://localhost:5000/v1/dashboard/interno/ativo"
+        );
         const eventos = response.data;
-        
+
         if (!eventos || eventos.length === 0) {
           setLoading(false);
           return;
@@ -27,7 +40,7 @@ const VtInternaCards = ({ conteudo }) => {
 
         const dsmData = [];
         const gestaoData = [];
-        
+
         for (const evento of eventos) {
           const turmaData = {
             name: evento.curso_semestre,
@@ -40,41 +53,50 @@ const VtInternaCards = ({ conteudo }) => {
             representantes: [],
             feedback: {
               otimo: Math.floor(Math.random() * 100),
-              bom: Math.floor(Math.random() * 100)
-            }
+              bom: Math.floor(Math.random() * 100),
+            },
+            votos_por_dia: evento.votos_por_dia || [],  // Puxando os dados de votos_por_dia
           };
-          
+
           try {
-            const candidatosResponse = await axios.get(`http://localhost:5000/v1/dashboard/interno/ativo/curso/${evento.curso_semestre}`);
-            turmaData.representantes = candidatosResponse.data.candidatos.map(c => ({
-              name: c.nome,
-              foto: c.foto_url || '/default-user.png'
-            }));
+            const candidatosResponse = await axios.get(
+              `http://localhost:5000/v1/dashboard/interno/ativo/curso/${evento.curso_semestre}`
+            );
+            turmaData.representantes = candidatosResponse.data.candidatos.map(
+              (c) => ({
+                name: c.nome,
+                foto: c.foto_url || "/default-user.png",
+                qtd_votos_recebidos: c.qtd_votos_recebidos,
+              })
+            );
           } catch (error) {
-            console.error(`Erro ao buscar candidatos para ${evento.curso_semestre}:`, error);
+            console.error(
+              `Erro ao buscar candidatos para ${evento.curso_semestre}:`,
+              error
+            );
           }
-          
-          if (evento.curso_semestre.includes('DSM')) {
+
+          if (evento.curso_semestre.includes("DSM")) {
             dsmData.push(turmaData);
           } else {
             gestaoData.push(turmaData);
           }
         }
-        
+
         setTurmaDataVotos({
           dsm: dsmData,
           gestao: gestaoData,
-          todos: [...dsmData, ...gestaoData]
+          todos: [...dsmData, ...gestaoData],
         });
-        
+
         setEventosAtivos(eventos);
         setLoading(false);
       } catch (error) {
-        console.error('Erro ao buscar eventos ativos:', error);
+        console.error("Erro ao buscar eventos ativos:", error);
         setLoading(false);
       }
     };
-    
+
     fetchEventosAtivos();
     setSelectedCurso("dsm");
   }, [setSelectedCurso]);
@@ -90,26 +112,46 @@ const VtInternaCards = ({ conteudo }) => {
     if (selectedCurso === "todos") {
       const allTurmas = [];
       if (turmaDataVotos.dsm)
-        turmaDataVotos.dsm.forEach((t) => allTurmas.push({ ...t, curso: "DSM" }));
+        turmaDataVotos.dsm.forEach((t) =>
+          allTurmas.push({ ...t, curso: "DSM" })
+        );
       if (turmaDataVotos.gestao)
-        turmaDataVotos.gestao.forEach((t) => allTurmas.push({ ...t, curso: "GE" }));
+        turmaDataVotos.gestao.forEach((t) =>
+          allTurmas.push({ ...t, curso: "GE" })
+        );
       return allTurmas.sort((a, b) => b.votos - a.votos);
     } else if (selectedCurso && turmaDataVotos[selectedCurso]) {
-      return [...turmaDataVotos[selectedCurso]].sort((a, b) => b.votos - a.votos);
+      return [...turmaDataVotos[selectedCurso]].sort(
+        (a, b) => b.votos - a.votos
+      );
     }
     return [];
   };
 
   const COLORS = ["#00C49F", "#FFBB28"];
 
-  const renderCustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+  const renderCustomLabel = ({
+    cx,
+    cy,
+    midAngle,
+    innerRadius,
+    outerRadius,
+    percent,
+    index,
+  }) => {
     const RADIAN = Math.PI / 180;
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
     return (
-      <text x={x} y={y} fill="white" textAnchor="middle" dominantBaseline="central">
+      <text
+        x={x}
+        y={y}
+        fill="white"
+        textAnchor="middle"
+        dominantBaseline="central"
+      >
         {`${(percent * 100).toFixed(0)}%`}
       </text>
     );
@@ -143,12 +185,30 @@ const VtInternaCards = ({ conteudo }) => {
           value={sortedData}
           responsiveOptions={responsiveOptions}
           itemTemplate={(item, index) => {
-            const sortedIndex = sortedData.findIndex((sortedItem) => sortedItem.name === item.name) + 1;
+            const sortedIndex =
+              sortedData.findIndex(
+                (sortedItem) => sortedItem.name === item.name
+              ) + 1;
 
             return (
               <div
-                className={`${styles.card} ${selectedCard?.name === item.name ? styles.selected : ""}`}
-                onClick={() => setSelectedCard(selectedCard?.name === item.name ? null : item)}
+                className={`${styles.card} ${
+                  selectedCard?.name === item.name ? styles.selected : ""
+                }`}
+                onClick={() => {
+                  setSelectedCard(
+                    selectedCard?.name === item.name ? null : item
+                  );
+                  alert(
+                    `Turma: ${item.name}\n` +
+                    `Votos: ${item.votos}\n` +
+                    `Total de Alunos: ${item.totalAlunos}\n` +
+                    `Candidatos: ${item.representantes
+                      .map((rep) => rep.name)
+                      .join(", ")}\n` +
+                    `Votos por Dia: ${JSON.stringify(item.votos_por_dia)}`
+                  );
+                }}
                 key={item.name}
               >
                 <div className={styles.cardContent}>
@@ -170,8 +230,11 @@ const VtInternaCards = ({ conteudo }) => {
                         isClient ? (
                           <PieChart width={150} height={100}>
                             <Pie
-                              data={[
-                                { name: "Ótimo", value: item.feedback.otimo || 0 },
+                              data={[ 
+                                {
+                                  name: "Ótimo",
+                                  value: item.feedback.otimo || 0,
+                                },
                                 { name: "Bom", value: item.feedback.bom || 0 },
                               ]}
                               dataKey="value"
@@ -185,7 +248,9 @@ const VtInternaCards = ({ conteudo }) => {
                             </Pie>
                           </PieChart>
                         ) : (
-                          <div style={{ width: 150, height: 100 }}>Carregando...</div>
+                          <div style={{ width: 150, height: 100 }}>
+                            Carregando...
+                          </div>
                         )
                       ) : (
                         <div>No Feedback Available</div>
@@ -236,15 +301,41 @@ const VtInternaCards = ({ conteudo }) => {
             </div>
             <hr className={styles.hrSeparador} />
           </div>
-          <div className={styles.telaContainer}>{conteudo}</div>
+          <div className={styles.telaContainer}>
+            <h2 className={styles.titleChart}>Overview</h2>
+            <div className={styles.chartContainer}>
+              <ContainerChart>
+                <ChartBar turma={selectedCard} />
+              </ContainerChart>
+              <ContainerChart>
+                <ChartDonut
+                  title="Quantidade de Votos"
+                  data={[
+                    {
+                      name: "Votos Confirmados",
+                      value: selectedCard.votosValidos,
+                    },
+                    {
+                      name: "Não Votaram",
+                      value: selectedCard.votosPendentes,
+                    },
+                  ]}
+                />
+              </ContainerChart>
+              <ContainerChart>
+                <ChartSemanal turma={selectedCard} />
+              </ContainerChart>
+            </div>
+            <div className={styles.listContainer}>
+              <RegistroVotos turma={selectedCard} />
+            </div>
+          </div>
         </>
       )}
 
       {!selectedCard && (
         <div className={styles.cardExtraContentGlobal}>
-          <h3 className={styles.nomesemcurso}>
-            SELECIONE UMA TURMA
-          </h3>
+          <h3 className={styles.nomesemcurso}>SELECIONE UMA TURMA</h3>
         </div>
       )}
     </>
