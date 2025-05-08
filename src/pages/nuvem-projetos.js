@@ -65,7 +65,7 @@ const ProjectCloud = () => {
           onChange={(e) => setSelectedTurma(e.value)}
           options={[{ label: 'Todos', value: 'todos' }, ...turmasOptions.map(t => ({ label: t.toUpperCase(), value: t }))]}
           placeholder="Turmas"
-          className="ml-auto"
+          className={styles.cursoSelector}
         />
       </div>
 
@@ -73,7 +73,7 @@ const ProjectCloud = () => {
 
       <div className={styles.divAtuacao}>
         <span className={styles.projectText}>
-          Projetos {selectedCurso ? selectedCurso.toUpperCase() : ''}
+          Projetos - {selectedCurso ? selectedCurso.toUpperCase() : ''}
         </span>
         <Dropdown
           options={[{ name: 'Todas as Áreas', value: 'all' }, ...areasDeAtuacao]}
@@ -81,7 +81,7 @@ const ProjectCloud = () => {
           value={selectedArea}
           onChange={(e) => setSelectedArea(e.value)}
           placeholder="Área de Atuação"
-          className="ml-auto"
+          className={styles.cursoSelector2}
         />
       </div>
 

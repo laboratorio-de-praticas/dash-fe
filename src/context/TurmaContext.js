@@ -181,7 +181,7 @@ const turmas = {
 
 const projetos = {
   dsm: [
-    { projeto: 'ProjetoDSM1', rank: 1, turma: 'dsm1', area: 'ti' },
+    { projeto: 'ProjetoDSM1', rank: 1, turma: 'dsm1', area: 'ti'},
     { projeto: 'ProjetoDSM2', rank: 3, turma: 'dsm2', area: 'educacao' },
     { projeto: 'ProjetoDSM3', rank: 4, turma: 'dsm3', area: 'inovacao' },
     { projeto: 'ProjetoDSM4', rank: 5, turma: 'dsm4', area: 'saude' },
