@@ -170,6 +170,57 @@ const curso = [
   { name: "Todos", value: "todos" },
 ];
 
+const turmas = {
+  dsm: [
+    'dsm1', 'dsm2', 'dsm3', 'dsm4', 'dsm5', 'dsm6'
+  ],
+  gestao: [
+    'ge1', 'ge2', 'ge3'
+  ]
+};
+
+const projetos = {
+  dsm: [
+    { projeto: 'ProjetoDSM1', rank: 1, turma: 'dsm1', area: 'ti'},
+    { projeto: 'ProjetoDSM2', rank: 3, turma: 'dsm2', area: 'educacao' },
+    { projeto: 'ProjetoDSM3', rank: 4, turma: 'dsm3', area: 'inovacao' },
+    { projeto: 'ProjetoDSM4', rank: 5, turma: 'dsm4', area: 'saude' },
+    { projeto: 'ProjetoDSM5', rank: 2, turma: 'dsm5', area: 'meioambiente' },
+    { projeto: 'ProjetoDSM6', rank: 6, turma: 'dsm6', area: 'financas' },
+    { projeto: 'ProjetoDSM7', rank: 7, turma: 'dsm2', area: 'rh' },
+    { projeto: 'ProjetoDSM8', rank: 10, turma: 'dsm3', area: 'marketing' },
+    { projeto: 'ProjetoDSM9', rank: 8, turma: 'dsm1', area: 'logistica' },
+    { projeto: 'ProjetoDSM10', rank: 9, turma: 'dsm2', area: 'administracao' }
+  ],
+  gestao: [
+    { projeto: 'ProjetoGE1', rank: 3, turma: 'ge1', area: 'administracao' },
+    { projeto: 'ProjetoGE2', rank: 4, turma: 'ge2', area: 'rh' },
+    { projeto: 'ProjetoGE3', rank: 2, turma: 'ge3', area: 'financas' },
+    { projeto: 'ProjetoGE4', rank: 1, turma: 'ge2', area: 'marketing' },
+    { projeto: 'ProjetoGE5', rank: 5, turma: 'ge1', area: 'educacao' },
+    { projeto: 'ProjetoGE6', rank: 7, turma: 'ge3', area: 'ti' },
+    { projeto: 'ProjetoGE7', rank: 6, turma: 'ge1', area: 'meioambiente' },
+    { projeto: 'ProjetoGE8', rank: 10, turma: 'ge2', area: 'logistica' },
+    { projeto: 'ProjetoGE9', rank: 9, turma: 'ge2', area: 'inovacao' },
+    { projeto: 'ProjetoGE10', rank: 8, turma: 'ge3', area: 'saude' }
+  ]
+};
+
+
+const areasDeAtuacao = [
+  { name: 'Tecnologia da Informação', value: 'ti' },
+  { name: 'Administração', value: 'administracao' },
+  { name: 'Marketing', value: 'marketing' },
+  { name: 'Recursos Humanos', value: 'rh' },
+  { name: 'Logística', value: 'logistica' },
+  { name: 'Finanças', value: 'financas' },
+  { name: 'Educação', value: 'educacao' },
+  { name: 'Saúde', value: 'saude' },
+  { name: 'Meio Ambiente', value: 'meioambiente' },
+  { name: 'Inovação e Empreendedorismo', value: 'inovacao' }
+];
+
+
 const votacaoType = [
   { name: "Votação Interna", value: 0 },
   { name: "Votação Externa", value: 1 },
@@ -219,9 +270,12 @@ const dataweek = {
 };
 
 export const TurmaProvider = ({ children }) => {
-  const [selectedCurso, setSelectedCurso] = useState("null");
+  const [selectedCurso, setSelectedCurso] = useState("todos");
+  const [selectedTurma, setSelectedTurma] = useState("todos");
   const [selectedVotacaoType, setSelectedVotacaoType] = useState(0);
   const [selectedCard, setSelectedCard] = useState('');  // Adiciona o estado selectedCard
+  const [selectedArea, setSelectedArea] = useState(null);
+
 
   return (
     <TurmaContext.Provider
@@ -230,13 +284,20 @@ export const TurmaProvider = ({ children }) => {
         setSelectedCurso,
         selectedVotacaoType,
         setSelectedVotacaoType,
-        selectedCard,       // Passa selectedCard
+        selectedCard,
+        selectedTurma,
+        setSelectedTurma,
         setSelectedCard,    // Passa setSelectedCard
         turmaData,
         turmaDataVotos,
         curso,
         votacaoType,
         dataweek,
+        turmas,
+        projetos,
+        areasDeAtuacao,
+        selectedArea,
+        setSelectedArea
       }}
     >
       {children}

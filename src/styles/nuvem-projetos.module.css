@@ -1,0 +1,58 @@
+/* ProjectCloud.module.css */
+.container {
+    margin-top: 2rem;
+    padding: 2rem;
+  }
+  
+  .header {
+    text-align: left;
+    font-size: 1.875rem;
+    font-weight: bold;
+    color: #1A6C7C;
+    
+  }
+  
+  .dropdownsContainer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+  
+  .dropdownsContainer .p-dropdown {
+    margin-left: auto;
+  }
+  
+  .projectText {
+    font-size: 1.225rem;
+    font-weight: 500;
+    color: #1A6C7C;
+    font-weight: bold;
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 0.375rem;
+    padding: 1.5rem;
+  }
+
+  .cursoSelector{
+    padding: 10px;
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    margin-bottom: 7px;
+    width: 9rem;
+  }
+
+  .cursoSelector2{
+    padding: 10px;
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    margin-bottom: 7px;
+    width: 10rem;
+  }
+   .divAtuacao{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-top: 5px;
+   }

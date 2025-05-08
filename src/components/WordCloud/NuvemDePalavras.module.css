@@ -1,0 +1,27 @@
+.NuvemDePalavrasContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start; 
+  gap: 10px; 
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%; 
+  max-width: 800px; 
+  height: auto; 
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+
+.word {
+  display: inline-block;
+  padding: 5px 10px;
+  color: #333;
+  transition: transform 0.2s ease-in-out;
+  cursor: default;
+  word-break: keep-all; 
+}
+
+.word:hover {
+  transform: scale(1.1);
+}
