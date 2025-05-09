@@ -207,43 +207,6 @@ const projetos = {
 };
 
 
-let nuvemPalavrasProjetos
-// Requisição para buscar dados da API
-fetch('http://localhost:5000/v1/dashboard/externo/ativo', {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json',
-    // Se necessário, adicione aqui outros cabeçalhos (como autenticação, por exemplo)
-  }
-})
-  .then(response => response.json()) // Converte a resposta da API para JSON
-  .then(data => {
-    console.log('Dados recebidos da API:', data);
-
-    // Agora, podemos usar os dados da API para preencher a variável nuvemPalavrasProjetos
-
-    nuvemPalavrasProjetos = {
-      dsm: data.map(item => ({
-        projeto: item.projetos_participantes?.[0].nome_projeto,
-        rank: item.projetos_participantes?.[0].votos_recebidos,
-        turma: item.projetos_participantes?.[0].turma,
-        area: item.projetos_participantes?.[0].linhas_extensao
-      })),
-      gestao: data.map(item => ({
-        projeto: "item.projeto",
-        rank: "item.rank",
-        turma: "item.turma",
-        area: "item.area"
-      }))
-    };
-
-    console.log('nuvemPalavrasProjetos atualizado:', nuvemPalavrasProjetos);
-  })
-  .catch(error => {
-    console.error('Erro ao fazer requisição para a API:', error);
-  });
-
-
 const areasDeAtuacao = [
   { name: 'Tecnologia da Informação', value: 'ti' },
   { name: 'Administração', value: 'administracao' },
@@ -317,7 +280,6 @@ export const TurmaProvider = ({ children }) => {
   return (
     <TurmaContext.Provider
       value={{
-        nuvemPalavrasProjetos,
         selectedCurso,
         setSelectedCurso,
         selectedVotacaoType,

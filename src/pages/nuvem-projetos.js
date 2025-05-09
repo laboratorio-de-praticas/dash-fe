@@ -16,7 +16,7 @@ const ProjectCloud = () => {
     setSelectedArea,
     curso,
     turmas,
-    projetos,
+    nuvemPalavrasProjetos,
     areasDeAtuacao
   } = useContext(TurmaContext);
 
@@ -29,8 +29,8 @@ const ProjectCloud = () => {
   // useEffect para aplicar os filtros sempre que os estados de filtro mudarem
   useEffect(() => {
     const filteredProjects = (selectedCurso === 'todos'
-      ? Object.values(projetos).flat() 
-      : projetos[selectedCurso] || [] 
+      ? Object.values(nuvemPalavrasProjetos).flat() 
+      : nuvemPalavrasProjetos[selectedCurso] || [] 
     ).filter((proj) => {
       // Filtra por área de atuação
       const isAreaMatch = selectedArea && selectedArea !== 'all' && selectedArea !== 'todos'
@@ -44,7 +44,7 @@ const ProjectCloud = () => {
     });
 
     setProjetosFiltrados(filteredProjects);
-  }, [selectedCurso, selectedTurma, selectedArea, projetos]); // Recalcula os projetos sempre que algum filtro mudar
+  }, [selectedCurso, selectedTurma, selectedArea, nuvemPalavrasProjetos]); // Recalcula os projetos sempre que algum filtro mudar
 
   return (
     <div className={styles.container}>
