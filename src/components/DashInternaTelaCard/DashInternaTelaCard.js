@@ -66,30 +66,9 @@ export default function DashInternoCard() {
         </div>
       </div>
 
-      {/* Fora da div vermelha, abaixo normalmente */}
       <>
         <div className={styles.cardContent}>
-          <VtInternaCards
-            conteudo={
-              <div>
-                <h2 className={styles.titleChart}>Overview</h2>
-                <div className={styles.chartContainer}>
-                  <ContainerChart>
-                    <ChartBar />
-                  </ContainerChart>
-                  <ContainerChart>
-                    <ChartDonut title="Quantidade de Votos" data={chartData} />
-                  </ContainerChart>
-                  <ContainerChart>
-                    <ChartSemanal />
-                  </ContainerChart>
-                </div>
-                <div className={styles.listContainer}>
-                  <RegistroVotos />
-                </div>
-              </div>
-            }
-          />
+          <VtInternaCards/>
         </div>
       </>
     </>

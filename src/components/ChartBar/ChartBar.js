@@ -11,16 +11,14 @@ import {
     ResponsiveContainer,
 } from "recharts";
 
-const data = [
-    { nome: "Carlos", votos: 40 },
-    { nome: "Lucas", votos: 50 },
-    { nome: "Ana", votos: 32 },
-    { nome: "Mariana", votos: 47 },
-    { nome: "João", votos: 28 },
-    { nome: "Fernanda", votos: 55 },
-];
+const ChartBar = ({ turma }) => {
+    // Extraindo candidatos e seus votos de `turma`
+    const candidatos = turma.representantes || [];
+    const data = candidatos.map((candidato) => ({
+        nome: candidato.name,
+        votos: candidato.qtd_votos_recebidos || 0,  // Supondo que você tenha a informação de votos de cada candidato
+    }));
 
-const ChartBar = () => {
     return (
         <ResponsiveContainer width="100%" height={300}>
             <BarChart
@@ -62,4 +60,3 @@ const ChartBar = () => {
 };
 
 export default ChartBar;
-    
